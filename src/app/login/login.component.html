@@ -1,0 +1,22 @@
+<p-toast></p-toast>
+<div id="login-wrapper">
+    <div id="login">
+        <div id="login-content">
+            <h1>Sign in</h1>
+            <form action="" id="login-form" [formGroup]="form">
+                <div class="input">
+                    <label for="email">Email:</label>
+                    <input type="text" name="" id="" placeholder="johndoe@email.com" formControlName="email">
+                </div>
+                <div class="input">
+                    <label for="password">Password:</label>
+                    <input type="password" name="" id="" placeholder="Your password" formControlName="password">
+                </div>
+                <div id="buttons">
+                    <button id="login-button" (click)="login($event)">Login</button>
+                    <button id="register-button">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
