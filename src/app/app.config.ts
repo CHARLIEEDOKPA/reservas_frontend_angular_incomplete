@@ -8,7 +8,8 @@ import {
   provideClientHydration,
 } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { httpInterceptorInterceptor } from './http-interceptor.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,6 +17,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     MessageService,
     importProvidersFrom(BrowserModule, BrowserAnimationsModule), 
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch(),withInterceptors([httpInterceptorInterceptor])),
   ],
 };

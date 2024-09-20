@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../../services/local-storage.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import {
@@ -22,7 +23,8 @@ export class LoginComponent {
   constructor(public messageService: MessageService) {}
 
   private authService = inject(AuthService);
-  private router = inject(Router)
+  private router = inject(Router);
+  private localStorageService = inject(LocalStorageService)
   form = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -40,12 +42,15 @@ export class LoginComponent {
     }
     const credentials = this.form.value;
     this.authService.login(credentials).subscribe(
-      (x) =>
+      (x) => {
+        const token = x.body!
+        this.localStorageService.setToken(token)
         this.messageService.add({
           severity: 'success',
           summary: 'Logged in successfully',
           detail: 'IS LOGGED',
-        }),
+        });
+      },
       (err: HttpErrorResponse) => {
         if (err.status === 401) {
           this.messageService.add({
@@ -59,7 +64,7 @@ export class LoginComponent {
   }
 
   redirectRegister() {
-    this.router.navigate(['register'])
+    this.router.navigate(['register']);
   }
 
   private validateForm() {

@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
   }
   platformId = inject(PLATFORM_ID);
 
-  register() {
+  registerAccount() {
     const error = this.validate();
     if (error) {
       return this.sendWrongFormatMessage(error);
