@@ -14,12 +14,9 @@ export class AuthService {
 
   public login(credentials:any) {
     return this.httpClient.post<Response<string>>(`${HOST}/auth/login`, credentials)
-    // .pipe(
-    //   catchError(error => {
-    //     console.log(error);
-        
-    //     return of("Error")
-    //   })
-    // );
+  }
+
+  public register(data:any) {
+    return this.httpClient.post<Response<void>>(`${HOST}/auth/register`,data)
   }
 }

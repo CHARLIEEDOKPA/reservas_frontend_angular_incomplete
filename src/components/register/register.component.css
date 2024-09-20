@@ -1,0 +1,81 @@
+#register-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 90px;
+    font-weight: 800;
+    color: rgb(46, 163, 36,0.4);
+    text-align: center;
+}
+
+label {
+    font-size: 30px;
+}
+
+.input {
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+#register {
+    border: 1px solid  rgb(46, 163, 36);
+    padding: 50px;
+    width: 985px;
+    border-radius: 10px;
+}
+
+#buttons {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#buttons button {
+    font-family: 'Poppins';
+    border: 1px solid  rgb(46, 163, 36);
+    border-radius: 10px;
+    font-size: 30px;
+    padding: 20px;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: 300ms;
+    background-color: rgb(46, 163, 36,0.4);
+    color: #fff;
+    transition: 300ms;
+}
+
+button:hover {
+    transform: scale(0.9);
+    cursor: pointer;
+}
+
+.input input {
+    border: 1px solid  rgb(46, 163, 36);
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    font-family: "Poppins";
+    width: 420px;
+}
+
+.input input::placeholder {
+    color:  rgb(3, 11, 2,0.4);
+}
+
+#form {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 25px;
+}
+
+
+/* Cambiar el color de los botones de navegación */
+.datepicker-cell {
+    background-color: red;
+}

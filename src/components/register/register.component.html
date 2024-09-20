@@ -1,0 +1,36 @@
+<div id="register-wrapper">
+  <div id="register" #register>
+    <h1>Register</h1>
+    <form id="form" [formGroup]="form">
+      <div class="input">
+        <label for="full-name" >Full name:</label>
+        <input type="text" name="" id="" formControlName="name"/>
+      </div>
+      <div class="input">
+        <label for="phone" >Phone:</label>
+        <input type="text" name="" id="" formControlName="phone" />
+      </div>
+      <div class="input">
+        <label for="email">Email:</label>
+        <input type="text" name="" id="" placeholder="johndoe@email.com" formControlName="email"/>
+      </div>
+      <div class="input">
+        <label for="date-born">Born:</label>
+           <input datepicker id="default-datepicker" #datepicker datepicker-format="yyyy/mm/dd" datepicker-min-date="1950/01/01" datepicker-max-date={format} type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500" placeholder="Select date">
+
+      </div>
+      <div class="input">
+        <label for="password">Password:</label>
+        <input type="password" name="" id="" placeholder="Your password" formControlName="password"/>
+      </div>
+      <div class="input">
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" formControlName="confirmPassword" name="" id="" placeholder="Your password" />
+      </div>
+    </form>
+    <div id="buttons">
+        <button (click)="register()">Register</button>
+      </div>
+  </div>
+  
+</div>
