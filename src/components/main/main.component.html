@@ -1,0 +1,9 @@
+<app-validate-jwt></app-validate-jwt>
+<app-navbar rol="{{rol}}"></app-navbar>
+@if (rol === "client") {
+    <app-client-main></app-client-main>
+} @else if (rol === "admin") {
+
+} @else {
+    
+}

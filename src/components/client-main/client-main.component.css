@@ -1,0 +1,100 @@
+h1 {
+    font-size: 90px;
+    color: rgb(46, 163, 36,0.4);
+    font-weight: 800;
+}
+
+#reservations-container {
+    padding: 20px;
+}
+
+#reservations-wrapper {
+    width: 1300px;
+    padding: 25px;
+}
+
+#reservations {
+    display:  grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+#filter {
+    padding: 20px;
+}
+
+.reservation {
+    width: 337px;
+    border:1px solid #2EA324;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#zero-reservations {
+    padding: 20px;
+}
+
+h2 {
+    font-weight: 800;
+    font-size: 40px;  
+}
+
+#info {
+    padding: 20px;
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+    font-size: 35px;
+    font-weight: 300;
+    padding: 10px;
+}
+
+p {
+    font-size: 20px
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+button {
+    padding: 7px;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 300;
+    width: 100px;
+    transition: 300ms;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(0.9);
+}
+
+select {
+    border-radius: 10px;
+    border: 1px solid #2EA324;
+}
+
+#button-change {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.red {
+    background-color: rgb(163, 36, 36,0.4);
+}
+
+.green {
+    background-color: rgb(46, 163, 36,0.4);
+}
+
+.blue {
+    background-color: rgb(36, 117, 163,0.4);
+}

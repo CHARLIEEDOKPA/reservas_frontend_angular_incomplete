@@ -1,0 +1,54 @@
+<div id="reservations-wrapper">
+  <div id="reservations-container">
+    <h1>Your reservations</h1>
+    <div id="filter">
+      <label>Filter by: </label>
+      <select #filter (change)="filterReservations()">
+        <option value="all">All</option>
+        <option value="pending">Pending</option>
+        <option value="rejected">Rejected</option>
+        <option value="accepted">Accepted</option>
+      </select>
+    </div>
+    @if (reservations.length > 0) {
+      <div id="reservations">
+        @for (r of reservations; track r.reservation_id) {
+        <div class="reservation">
+          <img src="../../assets/img/tuna-sushi.jpg" alt="" />
+          <div id="info">
+            @if(r.people > 1){
+            <h4>{{ r.people }} Peoples</h4>
+            } @else {
+              <h4> 1 Person</h4>
+            }
+            <p>Date: {{getDateString(r)}}</p>
+            <p>Time: {{getTimeString(r)}}</p>
+            <p>Status: <span class="capitalize">{{r.status}}</span></p>
+          </div>
+          <div id="buttons">
+            @if(datePassed(r)){
+              <button class="red">Delete</button>
+            } @else {
+              <button class="red">Cancel</button>
+            }
+            <button class="green">View</button>
+          </div>
+          @if (!datePassed(r)) {
+            <div id="button-change">
+              <button class="blue">Change</button>
+            </div>
+          }
+
+        </div>
+  
+        }
+      </div>
+    } @else {
+      <div id="zero-reservations">
+        <h2>NO RESERVATIONS</h2>
+      </div>
+      
+    }
+    
+  </div>
+</div>

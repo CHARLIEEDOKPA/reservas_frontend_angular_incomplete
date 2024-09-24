@@ -1,4 +1,4 @@
-import { LocalStorageService } from './../../services/local-storage.service';
+import { JwtService } from '../../services/jwt.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import {
@@ -11,11 +11,12 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { IsLoggedComponent } from "../is-logged/is-logged.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ToastModule, ReactiveFormsModule],
+  imports: [ToastModule, ReactiveFormsModule, IsLoggedComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -24,7 +25,7 @@ export class LoginComponent {
 
   private authService = inject(AuthService);
   private router = inject(Router);
-  private localStorageService = inject(LocalStorageService)
+  private localStorageService = inject(JwtService);
   form = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -43,13 +44,9 @@ export class LoginComponent {
     const credentials = this.form.value;
     this.authService.login(credentials).subscribe(
       (x) => {
-        const token = x.body!
-        this.localStorageService.setToken(token)
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Logged in successfully',
-          detail: 'IS LOGGED',
-        });
+        const token = x.body!;
+        this.localStorageService.setToken(token);
+        this.router.navigate(['main'])
       },
       (err: HttpErrorResponse) => {
         if (err.status === 401) {

@@ -10,13 +10,16 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { httpInterceptorInterceptor } from './http-interceptor.interceptor';
+import { JWT_OPTIONS, JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideClientHydration(),
     MessageService,
-    importProvidersFrom(BrowserModule, BrowserAnimationsModule), 
+    importProvidersFrom(BrowserModule, BrowserAnimationsModule,JwtModule.forRoot({
+      
+    })), 
     provideHttpClient(withFetch(),withInterceptors([httpInterceptorInterceptor])),
   ],
 };

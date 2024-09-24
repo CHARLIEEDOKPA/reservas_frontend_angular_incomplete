@@ -1,0 +1,17 @@
+<nav id="navbar">
+  <ul>
+    @if (rol === "client") {
+    <li>Request</li>
+    <li>Reservations</li>
+    <li>Profile</li>
+    } @else if (rol === "admin") { 
+        <li>Requests</li>
+    }@else {
+        <li>Add admin</li>
+    }
+  </ul>
+
+  <div id="logout">
+    <span class="material-symbols-outlined" (click)="logout()"> logout </span>
+  </div>
+</nav>

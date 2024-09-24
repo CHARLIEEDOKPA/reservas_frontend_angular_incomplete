@@ -1,0 +1,31 @@
+#navbar {
+    background-color: rgb(46, 163, 36,0.4);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    margin-right: 70px;
+    font-size: 30px;
+    color: #FFF;
+    font-weight: 200;
+}
+
+span {
+    color: #FFF;
+    font-size: 70PX;
+    transition: 300ms;
+}
+
+span:hover {
+    cursor: pointer;
+    transform: scale(0.9);
+}
