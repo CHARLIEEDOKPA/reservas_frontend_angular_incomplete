@@ -27,9 +27,9 @@
           </div>
           <div id="buttons">
             @if(datePassed(r)){
-              <button class="red">Delete</button>
+              <button class="red" (click)="openDialog('300ms', '300ms')">Delete</button>
             } @else {
-              <button class="red">Cancel</button>
+              <button class="red" (click)="openDialog('300ms', '300ms')">Cancel</button>
             }
             <button class="green">View</button>
           </div>
@@ -52,3 +52,4 @@
     
   </div>
 </div>
+

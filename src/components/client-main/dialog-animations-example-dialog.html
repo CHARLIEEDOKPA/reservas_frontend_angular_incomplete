@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Cancel o remove reservation</h2>
+<mat-dialog-content>
+  Are you sure to cancel or delete your reservation?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="close(false)">No</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="close(true)">Yes</button>
+</mat-dialog-actions>

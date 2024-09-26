@@ -1,6 +1,8 @@
 import { JwtService } from '../../services/jwt.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog'; // Asegúrate de que sea 'dialog'
+
 import {
   FormControl,
   FormGroup,

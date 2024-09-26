@@ -1,6 +1,13 @@
 import { Reservation } from './../../interfaces/reservation';
-import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { ReservationService } from '../../services/reservation.service';
+import { MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle,MatDialogModule, } from '@angular/material/dialog';
+  import {MatButtonModule} from "@angular/material/button"
 
 @Component({
   selector: 'app-client-main',
@@ -10,12 +17,22 @@ import { ReservationService } from '../../services/reservation.service';
   styleUrl: './client-main.component.css'
 })
 export class ClientMainComponent implements OnInit{
+openDialog(enterAnimationDuration: string,exitAnimationDuration: string) {
+  const prueba = this.dialog.open(DialogAnimationsExampleDialog, {
+    width: '250px',
+  });
+  
+ prueba.afterClosed().subscribe(x => console.log());
+  
+  
+}
 
 
 
   private reservationService = inject(ReservationService)
   private privateReservations:Reservation[] = []
   reservations:Reservation[] = []
+  private dialog = inject(MatDialog)
 
   @ViewChild("filter")
   private filterElement!:ElementRef
@@ -44,8 +61,25 @@ export class ClientMainComponent implements OnInit{
     return  new Date(`${reservation.date} ${reservation.time}`).toLocaleTimeString('en-US',options)
   }
 
+ 
 
   public datePassed(reservation:Reservation) {
     return new Date().getTime() > new Date(`${reservation.date} ${reservation.time}`).getTime()
   }
+}
+
+@Component({
+  selector: 'dialog-animations-example-dialog',
+  templateUrl: 'dialog-animations-example-dialog.html',
+  standalone: true,
+  imports: [MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent,MatDialogModule,MatButtonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DialogAnimationsExampleDialog {
+  dialogRef = inject(MatDialogRef<DialogAnimationsExampleDialog>);
+
+  public close(data:boolean) {
+    this.dialogRef.close(data);
+  }
+
 }
