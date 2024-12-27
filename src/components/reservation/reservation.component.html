@@ -1,0 +1,32 @@
+<app-navbar rol="client"></app-navbar>
+@if (reservation) {
+<div id="reservation">
+    
+    <div id="data-wrapper">
+        <div id="first-column">
+            <h1>Reservation info</h1>
+            <div id="data">
+                <p>Status: <span class="capitalize">{{reservation.status}}</span></p>
+                <p>People {{reservation.people}}</p>
+                <p>Date: {{reservation.date}}</p>
+                <p>Time: {{getTimeString()}}</p>
+                @if (reservation.note) {
+                    <p>Note: {{reservation.note}}</p>
+                }
+            </div>
+            <div id="buttons">
+                <button class="red" (click)="openDialog('0ms','0ms')">Cancel</button>
+                @if (!isPassed()) {
+                    <button class="blue">Change</button>
+                }
+            </div>
+        </div>
+        <div id="img">
+            <img src="../../assets/img/cocktail-wooden-table-restaurant.jpg" alt="">
+        </div>
+    </div>
+    
+
+</div>
+
+}

@@ -31,7 +31,7 @@
             } @else {
               <button class="red" (click)="openDialog('300ms', '300ms')">Cancel</button>
             }
-            <button class="green">View</button>
+            <button class="green" (click)="viewReservation(r.reservation_id)">View</button>
           </div>
           @if (!datePassed(r)) {
             <div id="button-change">

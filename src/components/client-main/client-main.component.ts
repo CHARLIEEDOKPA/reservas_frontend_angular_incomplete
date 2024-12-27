@@ -8,6 +8,8 @@ import { MatDialog,
   MatDialogRef,
   MatDialogTitle,MatDialogModule, } from '@angular/material/dialog';
   import {MatButtonModule} from "@angular/material/button"
+import { Router } from '@angular/router';
+import { timeString } from '../../utils';
 
 @Component({
   selector: 'app-client-main',
@@ -17,6 +19,7 @@ import { MatDialog,
   styleUrl: './client-main.component.css'
 })
 export class ClientMainComponent implements OnInit{
+
 openDialog(enterAnimationDuration: string,exitAnimationDuration: string) {
   const prueba = this.dialog.open(DialogAnimationsExampleDialog, {
     width: '250px',
@@ -33,6 +36,7 @@ openDialog(enterAnimationDuration: string,exitAnimationDuration: string) {
   private privateReservations:Reservation[] = []
   reservations:Reservation[] = []
   private dialog = inject(MatDialog)
+  private router = inject(Router)
 
   @ViewChild("filter")
   private filterElement!:ElementRef
@@ -57,8 +61,7 @@ openDialog(enterAnimationDuration: string,exitAnimationDuration: string) {
   }
 
   public getTimeString(reservation:Reservation) {
-    const options:Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit', hour12: false };
-    return  new Date(`${reservation.date} ${reservation.time}`).toLocaleTimeString('en-US',options)
+    return timeString(reservation)
   }
 
  
@@ -66,6 +69,11 @@ openDialog(enterAnimationDuration: string,exitAnimationDuration: string) {
   public datePassed(reservation:Reservation) {
     return new Date().getTime() > new Date(`${reservation.date} ${reservation.time}`).getTime()
   }
+
+
+  viewReservation(id: string) {
+    this.router.navigate(["reservation",id])
+    }
 }
 
 @Component({
